@@ -1,0 +1,25 @@
+name: publish on release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup Node.js 12
+      uses: actions/setup-node@v1
+      with:
+        node-version:  12
+      
+    - name: Bump version
+      run: |
+        echo ${{on.release.version}}
+      
+    - name: Build
+      run: |
+        npm install
+        npm run build
