@@ -3,6 +3,9 @@ on: push
 name: ci
 jobs:
   latest-version:
+    env:
+      INPUT_OWNER: kopach
+      INPUT_REPO: karma-sabarivka-reporter
     name: Get Latest Release
     runs-on: ubuntu-latest
     steps:
