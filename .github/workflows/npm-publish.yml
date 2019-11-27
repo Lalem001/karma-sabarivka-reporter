@@ -17,5 +17,7 @@ jobs:
         repo: release-info-action
         
     - name: Info
+      env:
+        TAG: ${{ steps.latest_version.outputs.latest_tag }}
       run: |
-        echo "tag: ${{ steps.latest_version.outputs.latest_tag }}"
+        echo $TAG
