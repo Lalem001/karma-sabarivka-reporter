@@ -13,5 +13,6 @@ jobs:
         owner: abatilo
         repo: release-info-action
         
-        run: |
-          echo ${{ steps.latest_version.outputs.latest_tag }}
+    - name: Info
+      run: |
+        echo ${{ steps.latest_version.outputs.latest_tag }}
