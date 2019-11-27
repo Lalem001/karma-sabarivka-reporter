@@ -25,7 +25,7 @@ jobs:
       
     - name: Bump version
       run: |
-        echo ${{ $release-version }}
+        echo ${{ release-version }}
       
     - name: Build
       run: |
