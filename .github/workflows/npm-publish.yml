@@ -1,32 +1,14 @@
-name: publish on release
+on: push
 
-on:
-  release:
-    types:
-      - published
-
+name: ci
 jobs:
-  build:
+  latest-version:
+    name: Get Latest Release
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@master
-
-    - uses: codfish/semantic-release-action@master
-      id: semantic
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Setup Node.js 12
-      uses: actions/setup-node@v1
+    - name: Get Latest Release
+      uses: abatilo/release-info-action@v1.0.0
       with:
-        node-version:  12
-      
-    - name: Bump version
-      run: |
-        echo ${{ steps.semantic.outputs.release-version }}
-      
-    - name: Build
-      run: |
-        npm install
-        npm run build
+        owner: abatilo
+        repo: release-info-action
