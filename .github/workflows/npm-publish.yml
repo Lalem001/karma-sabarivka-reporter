@@ -19,4 +19,3 @@ jobs:
     - name: Info
       run: |
         echo "tag: ${{ steps.latest_version.outputs.latest_tag }}"
-        echo "owner ${{ $INPUT_OWNER }}"
