@@ -21,11 +21,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version:  12
-        release-version: ${{ steps.semantic.outputs.release-version }}
       
     - name: Bump version
       run: |
-        echo ${{ release-version }}
+        echo ${{ steps.semantic.outputs.release-version }}
       
     - name: Build
       run: |
