@@ -1,23 +1,21 @@
 on: push
 
-name: ci
+name: Example
 jobs:
   latest-version:
-    env:
-      INPUT_OWNER: kopach
-      INPUT_REPO: karma-sabarivka-reporter
     name: Get Latest Release
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Get Latest Release
-      uses: abatilo/release-info-action@v1.0.0
+      id: latest_version
+      uses: abatilo/release-info-action@v1.1.0
       with:
         owner: abatilo
         repo: release-info-action
-        
-    - name: Info
+    - name: Example of consumption of the output
       env:
-        TAG: ${{ steps.latest_version.outputs.latest_tag }}
+        LATEST: ${{ steps.latest_version.outputs.latest_tag }}
+        LATEST_DATE: ${{ steps.latest_version.outputs.latest_tag_published_at }}
       run: |
-        echo $TAG
+        echo "Version $LATEST was released at $LATEST_DATE"
